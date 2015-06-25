@@ -6,6 +6,7 @@
  * @description
  * # MainCtrl
  * Controller of the unitTrackerApp
+ * Adding a comment for new branch test
  */
 app.run(function (editableOptions) {
   editableOptions.theme = 'bs3';
