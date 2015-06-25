@@ -5,7 +5,7 @@
  * @name unitTrackerApp
  * @description
  * # unitTrackerApp
- *
+ * Comment to test git
  * Main module of the application.
  */
 var app = angular.module('unitTrackerApp', ['ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch', 'xeditable', 'ui.bootstrap', 'httpPostFix']);
