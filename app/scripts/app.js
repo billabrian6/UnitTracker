@@ -66,7 +66,7 @@ app.factory('myService', function ($http, $q) {
 
   myService.async = function () {
     //The path to the php file must be added below
-    $http.get('../unit-tracking.php')
+    $http.get('/units')
       .success(function (d) {
       data = d;
       deffered.resolve();

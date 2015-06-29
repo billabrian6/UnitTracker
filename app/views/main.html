@@ -116,19 +116,19 @@
     <tbody>
       <tr ng-repeat="property in units | orderBy:sortType:sortReverse | filter:searchUnit">
         <!--<td style="white-space: nowrap"><span editable-text="property.id" e-name="id" e-form="rowform" onbeforesave="checkName($data, property.id)" e-required>{{ property.id || 'empty' }}</span></td>-->
-        <td style="white-space: nowrap"><span e-name="id" e-form="rowform" onbeforesave="checkName($data, property.id)">{{ property.id | number }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.dateAdded" e-name="dateAdded" e-form="rowform" >{{ property.dateAdded | date:'MM/dd/yyyy' || 'empty' }}</span></td>
-        <td style="white-space: nowrap; text-align: center; vertical-align: middle"><span editable-select="property.unitCondition" e-name="unitCondition" e-form="rowform" e-ng-options="c.value as c.text for c in conditionStatus">{{ showConditionStatus(property) }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.make" e-name="make" e-form="rowform" e-typeahead="make for make in makes | filter:$viewValue | limitTo:8">{{ property.make || 'empty' }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.model" e-name="model" e-form="rowform">{{ property.model || 'empty' }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.unit_num" e-name="unit_num" e-form="rowform">{{ property.unit_num || 'empty' }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.serial_num" e-name="serial_num" e-form="rowform">{{ property.serial_num || 'empty' }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.description" e-name="description" e-form="rowform">{{ property.description || 'empty' }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.gl_num" e-name="gl_num" e-form="rowform" e-typeahead="gl_num for gl_num in glNums | filter:$viewValue | limitTo:8">{{ property.gl_num || 'empty' }}</span></td>
-        <td style="white-space: nowrap; text-align: center; vertical-align: middle"><span editable-select="property.trade" e-name="trade" e-form="rowform" e-ng-options="t.value as t.text for t in tradeStatus">{{ showTradeStatus(property) }}</span></td>
-        <td style="white-space: nowrap; text-align: center; vertical-align: middle"><span editable-select="property.invoice_posted" e-name="invoice_posted" e-form="rowform" e-ng-options="i.value as i.text for i in invoiceStatus">{{ showInvoiceStatus(property) }}</span></td>
-        <td style="white-space: nowrap"><span editable_text="property.notes" e-name="notes" e-form="rowform">{{ property.notes || 'empty' }}</span></td>
-        <td style="white-space: nowrap">
+        <td class="td-units"><span e-name="id" e-form="rowform" onbeforesave="checkName($data, property.id)">{{ property.id | number }}</span></td>
+        <td class="td-units"><span editable-text="property.dateAdded" e-name="dateAdded" e-form="rowform" >{{ property.dateAdded | date:'MM/dd/yyyy' || 'empty' }}</span></td>
+        <td class="td-units centered-text"><span editable-select="property.unitCondition" e-name="unitCondition" e-form="rowform" e-ng-options="c.value as c.text for c in conditionStatus">{{ showConditionStatus(property) }}</span></td>
+        <td class="td-units"><span editable-text="property.make" e-name="make" e-form="rowform" e-typeahead="make for make in makes | filter:$viewValue | limitTo:8">{{ property.make || 'empty' }}</span></td>
+        <td class="td-units"><span editable-text="property.model" e-name="model" e-form="rowform">{{ property.model || 'empty' }}</span></td>
+        <td class="td-units"><span editable-text="property.unit_num" e-name="unit_num" e-form="rowform">{{ property.unit_num || 'empty' }}</span></td>
+        <td class="td-units"><span editable-text="property.serial_num" e-name="serial_num" e-form="rowform">{{ property.serial_num || 'empty' }}</span></td>
+        <td class="td-units"><span editable-text="property.description" e-name="description" e-form="rowform">{{ property.description || 'empty' }}</span></td>
+        <td class="td-units"><span editable-text="property.gl_num" e-name="gl_num" e-form="rowform" e-typeahead="gl_num for gl_num in glNums | filter:$viewValue | limitTo:8">{{ property.gl_num || 'empty' }}</span></td>
+        <td class="td-units centered-text"><span editable-select="property.trade" e-name="trade" e-form="rowform" e-ng-options="t.value as t.text for t in tradeStatus">{{ showTradeStatus(property) }}</span></td>
+        <td class="td-units centered-text"><span editable-select="property.invoice_posted" e-name="invoice_posted" e-form="rowform" e-ng-options="i.value as i.text for i in invoiceStatus">{{ showInvoiceStatus(property) }}</span></td>
+        <td class="td-units"><span editable_text="property.notes" e-name="notes" e-form="rowform">{{ property.notes || 'empty' }}</span></td>
+        <td class="td-units">
           <form editable-form name="rowform" onbeforesave="saveUnit($data, property.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == property">
             <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
               Save

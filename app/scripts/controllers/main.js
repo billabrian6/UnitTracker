@@ -115,7 +115,7 @@ angular.module('unitTrackerApp')
     $http({
       method: 'POST',
       //The path to php file must be added
-      url: '../unit-tracking.php',
+      url: '/units',
       data: phpObj
     }).success(function (ret) {
       console.log(ret);
@@ -211,7 +211,7 @@ angular.module('unitTrackerApp')
       $http({
         method: 'POST',
         //The path to php file must be added
-        url: '../unit-tracking.php',
+        url: '/units',
         data: { function: 'deleteFromDB', index: id }
 
       }).success(function (ret) {
