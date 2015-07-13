@@ -3,74 +3,73 @@
     <p>Sort Reverse: {{ sortReverse }}</p>
     <p>Search Query: {{ searchUnit }}</p>
   </div>
-  
+
   <button class="btn btn-default top-button" ng-click="addUnit()">Add Unit</button>
-  
   <form>
     <div class="form-group">
       <div class="input-group">
         <div class="input-group-addon"><i class="fa fa-search"></i></div>
         <input type="text" class="form-control" placeholder="Search Units" ng-model="searchUnit">
-      </div>      
+      </div>
     </div>
   </form>
-  
+
   <table class="table table-bordered table-striped">
-    
+
     <thead>
       <tr>
         <td>
           <a ng-click="sortType = 'id'; sortReverse = !sortReverse">
-            ID 
+            ID
             <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
             <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td>
           <a ng-click="sortType = 'date'; sortReverse = !sortReverse">
-            Date 
+            Date
             <span ng-show="sortType == 'date' && !sortReverse" class="fa fa-caret-down"></span>
             <span ng-show="sortType == 'date' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td>
           <a ng-click="sortType = 'condition'; sortReverse = !sortReverse">
-            Condition 
+            Condition
             <span ng-show="sortType == 'condition' && !sortReverse" class="fa fa-caret-down"></span>
             <span ng-show="sortType == 'condition' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td>
           <a ng-click="sortType = 'make'; sortReverse = !sortReverse">
-            Make 
+            Make
             <span ng-show="sortType == 'make' && !sortReverse" class="fa fa-caret-down"></span>
             <span ng-show="sortType == 'make' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td>
           <a ng-click="sortType = 'model'; sortReverse = !sortReverse">
-          Model 
+          Model
             <span ng-show="sortType == 'model' && !sortReverse" class="fa fa-caret-down"></span>
             <span ng-show="sortType == 'model' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td>
           <a ng-click="sortType = 'unit_num'; sortReverse = !sortReverse">
-            Unit # 
+            Unit #
             <span ng-show="sortType == 'unit_num' && !sortReverse" class="fa fa-caret-down"></span>
             <span ng-show="sortType == 'unit_num' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td>
           <a ng-click="sortType = 'serial_num'; sortReverse = !sortReverse">
-            Serial # 
+            Serial #
             <span ng-show="sortType == 'serial_num' && !sortReverse" class="fa fa-caret-down"></span>
             <span ng-show="sortType == 'serial_num' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td>
           <a ng-click="sortType = 'description'; sortReverse = !sortReverse">
-            Description 
+            Description
             <span ng-show="sortType == 'description' && !sortReverse" class="fa fa-caret-down"></span>
             <span ng-show="sortType == 'description' && sortReverse" class="fa fa-caret-up"></span>
           </a>
@@ -84,14 +83,14 @@
         </td>
         <td>
           <a ng-click="sortType = 'trade'; sortReverse = !sortReverse">
-            Trade 
+            Trade
             <span ng-show="sortType == 'trade' && !sortReverse" class="fa fa-caret-down"></span>
             <span ng-show="sortType == 'trade' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td>
           <a ng-click="sortType = 'invoice_posted'; sortReverse = !sortReverse">
-            Invoice Posted 
+            Invoice Posted
             <span ng-show="sortType == 'invoice_posted' && !sortReverse" class="fa fa-caret-down"></span>
             <span ng-show="sortType == 'invoice_posted' && sortReverse" class="fa fa-caret-up"></span>
           </a>
@@ -106,29 +105,29 @@
       </tr>
       <td>
           <a ng-click="sortType = 'id'; sortReverse = !sortReverse">
-            Functions 
+            Functions
             <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
             <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
     </thead>
-    
+
     <tbody>
       <tr ng-repeat="property in units | orderBy:sortType:sortReverse | filter:searchUnit">
         <!--<td style="white-space: nowrap"><span editable-text="property.id" e-name="id" e-form="rowform" onbeforesave="checkName($data, property.id)" e-required>{{ property.id || 'empty' }}</span></td>-->
-        <td style="white-space: nowrap"><span e-name="id" e-form="rowform" onbeforesave="checkName($data, property.id)">{{ property.id | number }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.dateAdded" e-name="dateAdded" e-form="rowform" >{{ property.dateAdded | date:'MM/dd/yyyy' || 'empty' }}</span></td>
-        <td style="white-space: nowrap; text-align: center; vertical-align: middle"><span editable-select="property.unitCondition" e-name="unitCondition" e-form="rowform" e-ng-options="c.value as c.text for c in conditionStatus">{{ showConditionStatus(property) }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.make" e-name="make" e-form="rowform" e-typeahead="make for make in makes | filter:$viewValue | limitTo:8">{{ property.make || 'empty' }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.model" e-name="model" e-form="rowform">{{ property.model || 'empty' }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.unit_num" e-name="unit_num" e-form="rowform">{{ property.unit_num || 'empty' }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.serial_num" e-name="serial_num" e-form="rowform">{{ property.serial_num || 'empty' }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.description" e-name="description" e-form="rowform">{{ property.description || 'empty' }}</span></td>
-        <td style="white-space: nowrap"><span editable-text="property.gl_num" e-name="gl_num" e-form="rowform" e-typeahead="gl_num for gl_num in glNums | filter:$viewValue | limitTo:8">{{ property.gl_num || 'empty' }}</span></td>
-        <td style="white-space: nowrap; text-align: center; vertical-align: middle"><span editable-select="property.trade" e-name="trade" e-form="rowform" e-ng-options="t.value as t.text for t in tradeStatus">{{ showTradeStatus(property) }}</span></td>
-        <td style="white-space: nowrap; text-align: center; vertical-align: middle"><span editable-select="property.invoice_posted" e-name="invoice_posted" e-form="rowform" e-ng-options="i.value as i.text for i in invoiceStatus">{{ showInvoiceStatus(property) }}</span></td>
-        <td style="white-space: nowrap"><span editable_text="property.notes" e-name="notes" e-form="rowform">{{ property.notes || 'empty' }}</span></td>
-        <td style="white-space: nowrap">
+        <td class="td-units"><span e-name="id" e-form="rowform">{{ property.id | number }}</span></td>
+        <td class="td-units"><span editable-text="property.dateAdded" e-name="dateAdded" e-form="rowform" >{{ property.dateAdded | date:'MM/dd/yyyy' || 'empty' }}</span></td>
+        <td class="td-units centered-text"><span editable-select="property.unitCondition" e-name="unitCondition" e-form="rowform" e-ng-options="c.value as c.text for c in conditionStatus">{{ showConditionStatus(property) }}</span></td>
+        <td class="td-units"><span editable-text="property.make" e-name="make" e-form="rowform" e-typeahead="make for make in makes | filter:$viewValue | limitTo:8">{{ property.make || 'empty' }}</span></td>
+        <td class="td-units"><span editable-text="property.model" e-name="model" e-form="rowform">{{ property.model || 'empty' }}</span></td>
+        <td class="td-units"><span editable-text="property.unit_num" e-name="unit_num" e-form="rowform">{{ property.unit_num || 'empty' }}</span></td>
+        <td class="td-units"><span editable-text="property.serial_num" e-name="serial_num" e-form="rowform">{{ property.serial_num || 'empty' }}</span></td>
+        <td class="td-units"><span editable-text="property.description" e-name="description" e-form="rowform">{{ property.description || 'empty' }}</span></td>
+        <td class="td-units"><span editable-text="property.gl_num" e-name="gl_num" e-form="rowform" e-typeahead="gl_num for gl_num in glNums | filter:$viewValue | limitTo:8">{{ property.gl_num || 'empty' }}</span></td>
+        <td class="td-units centered-text"><span editable-select="property.trade" e-name="trade" e-form="rowform" e-ng-options="t.value as t.text for t in tradeStatus">{{ showTradeStatus(property) }}</span></td>
+        <td class="td-units centered-text"><span editable-select="property.invoice_posted" e-name="invoice_posted" e-form="rowform" e-ng-options="i.value as i.text for i in invoiceStatus">{{ showInvoiceStatus(property) }}</span></td>
+        <td class="td-units"><span editable_text="property.notes" e-name="notes" e-form="rowform">{{ property.notes || 'empty' }}</span></td>
+        <td class="td-units">
           <form editable-form name="rowform" onbeforesave="saveUnit($data, property.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == property">
             <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
               Save
@@ -136,14 +135,15 @@
             <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
               Cancel
             </button>
-            <button type="button" ng-disabled="rowform.$waiting" ng-click="copyUnit(property.id); rowform.$cancel()" class="btn btn-info">
+            <!-- <button type="submit" ng-disabled="rowform.$waiting" ng-submit="copyUnit(property.id); rowform.$cancel()" class="btn btn-info">
               Copy
-            </button>
+            </button> -->
           </form>
           <div class="buttons" ng-show="!rowform.$visible">
             <button class="btn btn-primary" confirmed-click="rowform.$show()" ng-confirm-click="Are you sure you want to edit this unit?" id="{{property.id}}">Edit</button>
             <button class="btn btn-danger" name="deleteBtn" ng-click="removeUnit($event)" id="{{property.id}}">Delete</button>
-          </div>  
+            <button class="btn btn-success" name="copyBtn" ng-click="copyUnit(property.id)">Copy</button>
+          </div>
       </td>
       </tr>
     </tbody>

@@ -98,7 +98,6 @@ angular.module('unitTrackerApp')
     $scope.units = unitObj;
   }
 
-
   $scope.saveUnit = function (data, id) {
     var phpObj = data;
     phpObj['function'] = 'updateQuery';
@@ -221,4 +220,3 @@ angular.module('unitTrackerApp')
     }
   };
 });
-  
