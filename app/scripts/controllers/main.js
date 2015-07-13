@@ -98,7 +98,6 @@ angular.module('unitTrackerApp')
     $scope.units = unitObj;
   }
 
-
   $scope.saveUnit = function (data, id) {
     var phpObj = data;
     phpObj['function'] = 'updateQuery';
@@ -115,7 +114,7 @@ angular.module('unitTrackerApp')
     $http({
       method: 'POST',
       //The path to php file must be added
-      url: '/units',
+      url: '../unit-tracking.php',
       data: phpObj
     }).success(function (ret) {
       console.log(ret);
@@ -211,7 +210,7 @@ angular.module('unitTrackerApp')
       $http({
         method: 'POST',
         //The path to php file must be added
-        url: '/units',
+        url: '../unit-tracking.php',
         data: { function: 'deleteFromDB', index: id }
 
       }).success(function (ret) {
@@ -221,4 +220,3 @@ angular.module('unitTrackerApp')
     }
   };
 });
-  
