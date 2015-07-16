@@ -3,3 +3,5 @@ dist
 .tmp
 .sass-cache
 bower_components
+api/v1/passwordHash.php
+api/config.php

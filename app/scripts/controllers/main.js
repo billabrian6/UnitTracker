@@ -17,7 +17,6 @@ angular.module('unitTrackerApp')
   var unitObj = [];
 
   $scope.logout = function () {
-    console.log('Testing');
       Data.get('logout').then(function (results) {
           Data.toast(results);
           $location.path('login');
