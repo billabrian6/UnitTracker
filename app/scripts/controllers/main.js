@@ -10,11 +10,19 @@
  */
 
 angular.module('unitTrackerApp')
-  .controller('MainCtrl', function (myService, $scope, $filter, $http, $window) {
+  .controller('MainCtrl', function (myService, $scope, $filter, $http, $window, $location, Data) {
   $scope.sortType = 'id';
   $scope.sortReverse = true;
   $scope.searchUnit = '';
   var unitObj = [];
+
+  $scope.logout = function () {
+    console.log('Testing');
+      Data.get('logout').then(function (results) {
+          Data.toast(results);
+          $location.path('login');
+      });
+  }
 
   function updateUnits() {
     myService.async().then(function () {

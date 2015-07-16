@@ -8,25 +8,28 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angularjs-toaster/toaster.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
     <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+    <link href="bower_components/angularjs-toaster/toaster.min.css" rel="stylesheet">
     <!-- endbuild -->
+    <!-- <link rel="stylesheet" href="styles/toaster.css"> -->
   </head>
   <body ng-app="unitTrackerApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    
+
 
 
     <div class="container" ng-view=""></div>
 
-
+    <toaster-container></toaster-container>
     <div class="footer">
       <div class="container">
         <p><span class="glyphicon glyphicon-cog"></span> Alma Tractor Unit Tracker</p>
@@ -59,6 +62,7 @@
     <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-post-fix/postfix.js"></script>
+    <script src="bower_components/angularjs-toaster/toaster.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -66,6 +70,9 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-rc.2/angular-mocks.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/authCtrl.js"></script>
+        <script src="scripts/controllers/data.js"></script>
+        <script src="scripts/controllers/directives.js"></script>
         <!--<script src="scripts/controllers/about.js"></script>-->
         <!-- endbuild -->
 </body>

@@ -7,15 +7,35 @@
  * # unitTrackerApp
  * Main module of the application.
  */
-var app = angular.module('unitTrackerApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'xeditable', 'ui.bootstrap', 'httpPostFix']);
+var app = angular.module('unitTrackerApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'xeditable', 'ui.bootstrap', 'httpPostFix', 'toaster']);
 
 app.config(function ($routeProvider) {
   $routeProvider
-    .when('/', {
+  .when('/login', {
+    templateUrl: 'views/login.html',
+    controller: 'authCtrl'
+  })
+  .when('/logout', {
+    title: 'Logout',
+    templateUrl: 'views/login.html',
+    controller: 'authCtrl'
+  })
+  .when('/signup', {
+    templateUrl: 'views/signup.html',
+    controller: 'authCtrl'
+  })
+  .when('/main', {
+    title: 'Main',
     templateUrl: 'views/main.html',
     controller: 'MainCtrl'
   })
-    .otherwise({
+  .when('/', {
+    title: 'Login',
+    templateUrl: 'views/login.html',
+    controller: 'authCtrl',
+    role: '0'
+  })
+  .otherwise({
     redirectTo: '/'
   });
 });
@@ -23,6 +43,28 @@ app.config(function ($routeProvider) {
 app.run(function (editableOptions) {
   editableOptions.theme = 'bs3';
 });
+
+app.run(function ($rootScope, $location, Data) {
+  $rootScope.$on("$routeChangeStart", function (event, next, current) {
+    $rootScope.authenticated = false;
+    Data.get('session').then(function (results) {
+      if (results.uid) {
+        $rootScope.authenticated = true;
+        $rootScope.uid = results.uid;
+        $rootScope.name = results.name;
+        $rootScope.email = results.email;
+      } else {
+        var nextUrl = next.$$route.originalPath;
+        if (nextUrl == '/signup' || nextUrl == '/login') {
+
+        } else {
+          $location.path("/login");
+        }
+      }
+    });
+  });
+});
+
 
 // app.run(function ($httpBackend) {
 
@@ -77,5 +119,3 @@ app.factory('myService', function ($http, $q) {
 
   return myService;
 });
-
-
